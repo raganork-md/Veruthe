@@ -5,71 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OtaVerse - Explore the Universe</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts ഫോണ്ടുകൾക്ക് വേണ്ടി -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Parallax Background Container -->
     <div class="parallax-container">
-        <!-- Layer 1: ദൂരെയുള്ള ആകാശം/നക്ഷത്രങ്ങൾ -->
         <div class="parallax-layer bg-sky" data-speed="1"></div>
-        <!-- Layer 2: കോട്ട/കെട്ടിടങ്ങൾ -->
         <div class="parallax-layer bg-castle" data-speed="3"></div>
-        <!-- Layer 3: മുന്നിലുള്ള ക്യാരക്ടേഴ്സ് -->
         <div class="parallax-layer bg-characters" data-speed="5"></div>
     </div>
 
-    <!-- Main Content App Interface -->
     <div class="app-interface">
         
-        <!-- Sidebar Navigation -->
+        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">🌌 OTA_VERSE</div>
             <nav class="nav-links">
-                <a href="#" class="active"><span>⚔️</span> ANIME HEROES</a>
-                <a href="#"><span>🎮</span> GAME QUESTS</a>
-                <a href="#"><span>📜</span> THEORY CORNER</a>
-                <a href="#"><span>🎨</span> FAN ART</a>
-                <a href="#"><span>📢</span> LATEST RELEASES</a>
+                <a href="#" class="active" onclick="switchTab('anime')"><span>⚔️</span> ANIME HEROES</a>
+                <a href="#" onclick="switchTab('games')"><span>🎮</span> GAME QUESTS</a>
+                <a href="#" onclick="switchTab('latest')"><span>📢</span> LATEST RELEASES</a>
             </nav>
         </aside>
 
-        <!-- Main Content Area -->
+        <!-- Main Content -->
         <main class="main-content">
-            <header class="hero-text">
-                <h1>EXPLORE THE UNIVERSE:<br><span class="highlight">WHERE ANIME MEETS GAMING.</span></h1>
-                <p>Your Interactive Journey Begins Here. Move Your Mouse & Discover.</p>
-            </header>
+            <!-- Dynamic Content Container -->
+            <div id="content-area">
+                <header class="hero-text">
+                    <h1>EXPLORE THE UNIVERSE:<br><span class="highlight">WHERE ANIME MEETS GAMING.</span></h1>
+                    <p>Your Interactive Journey Begins Here. Move Your Mouse & Discover.</p>
+                </header>
+            </div>
 
             <!-- Bottom Action Buttons -->
             <div class="action-buttons">
-                <button class="btn btn-guild">JOIN A GUILD</button>
-                <button class="btn btn-builder">CHARACTER BUILDER</button>
-                <button class="btn btn-events">UPCOMING EVENTS</button>
+                <!-- നിങ്ങളുടെ ഡിസ്‌കോർഡ് അല്ലെങ്കിൽ വാട്സാപ്പ് ലിങ്ക് ഇവിടെ നൽകാം -->
+                <a href="https://discord.gg" target="_blank" class="btn btn-guild">JOIN A GUILD</a>
+                <button class="btn btn-builder" onclick="openModal()">CHARACTER BUILDER</button>
+                <button class="btn btn-events" onclick="switchTab('latest')">UPCOMING EVENTS</button>
             </div>
         </main>
 
-        <!-- Right Sidebar (Popular Paths) -->
+        <!-- Right Sidebar -->
         <aside class="right-sidebar">
             <h3>POPULAR PATHS:</h3>
-            <div class="path-card">
+            <!-- യഥാർത്ഥ ഗെയിമിംഗ്/അനിമേഷൻ സൈറ്റുകളിലേക്ക് ലിങ്ക് ചെയ്തു -->
+            <a href="https://www.ign.com/rpg" target="_blank" class="path-card">
                 <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=150&q=80" alt="RPG">
                 <div class="card-info">
                     <h4>Top Action RPGs</h4>
+                    <span class="click-text">Explore News →</span>
                 </div>
-            </div>
-            <div class="path-card">
+            </a>
+            <a href="https://myanimelist.net" target="_blank" class="path-card">
                 <img src="https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=150&q=80" alt="Anime">
                 <div class="card-info">
                     <h4>Seasonal Anime Picks</h4>
+                    <span class="click-text">View List →</span>
                 </div>
-            </div>
+            </a>
         </aside>
 
+    </div>
+
+    <!-- Character Builder Modal (പോപ്പ്-അപ്പ് വിൻഡോ) -->
+    <div id="avatarModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Select Your Class</h2>
+            <p>Choose your starting path in OtaVerse:</p>
+            <div class="class-options">
+                <div class="class-box" onclick="selectClass('Shinobi')">🥷 Shinobi</div>
+                <div class="class-box" onclick="selectClass('Mage')">🧙‍♂️ Mage</div>
+                <div class="class-box" onclick="selectClass('Mecha Pilot')">🤖 Mecha Pilot</div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
-          </html>
-  
+</html>
