@@ -3,77 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ CORE_OS v2.6 - Central Terminal</title>
+    <title>🌌 OrbitCapsule - Your Chill Space</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="cyber-grid"></div>
+    <div class="space-bg"></div>
 
-    <div class="os-container">
+    <div class="capsule-wrapper">
         
-        <header class="os-header">
-            <div class="status-indicator">● SYSTEM_ONLINE</div>
-            <div id="cyber-clock" class="clock-display">00:00:00</div>
-            <div class="system-id">USER_NODE // LOCAL_HOST</div>
-        </header>
-
-        <div class="os-grid">
+        <div class="glass-panel sound-box">
+            <h2>🎵 AMBIENT MIXER</h2>
+            <p>Create your perfect focus environment</p>
             
-            <div class="panel terminal-panel">
-                <div class="panel-header">⚡ TERMINAL_FEED</div>
-                <div id="terminal-body" class="panel-body console-text">
-                    >> Initializing system core...<br>
-                    >> Loading encryption matrix...<br>
+            <div class="sound-controls">
+                <div class="control-row">
+                    <span>🌧️ Rain Shower</span>
+                    <input type="range" id="rain-vol" min="0" max="1" step="0.1" value="0" onchange="updateVolume('rain')">
+                </div>
+                <div class="control-row">
+                    <span>🔥 Campfire</span>
+                    <input type="range" id="fire-vol" min="0" max="1" step="0.1" value="0" onchange="updateVolume('fire')">
+                </div>
+                <div class="control-row">
+                    <span>🍃 Forest Wind</span>
+                    <input type="range" id="wind-vol" min="0" max="1" step="0.1" value="0" onchange="updateVolume('wind')">
                 </div>
             </div>
-
-            <div class="panel action-panel">
-                <div class="panel-header">🔮 MAIN_CONTROLS</div>
-                <div class="panel-body buttons-grid">
-                    <a href="https://wa.me/your-number" target="_blank" class="cyber-btn">
-                        <span class="btn-glitch">ACTIVATE_BOT</span>
-                    </a>
-                    <a href="https://github.com" target="_blank" class="cyber-btn">
-                        <span class="btn-glitch">GITHUB_REPOS</span>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" class="cyber-btn">
-                        <span class="btn-glitch">SECURE_FEED</span>
-                    </a>
-                    <button class="cyber-btn alert-trigger" onclick="triggerBreachAlert()">
-                        <span class="btn-glitch">SYSTEM_TEST</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="panel diagnostic-panel">
-                <div class="panel-header">📊 CORE_DIAGNOSTICS</div>
-                <div class="panel-body diagnostics-flex">
-                    <div class="diag-item">
-                        <span>CPU_LOAD:</span>
-                        <div class="progress-bar"><div id="cpu-bar" class="progress-fill" style="width: 42%;"></div></div>
-                        <span id="cpu-text">42%</span>
-                    </div>
-                    <div class="diag-item">
-                        <span>RAM_USAGE:</span>
-                        <div class="progress-bar"><div id="ram-bar" class="progress-fill" style="width: 68%;"></div></div>
-                        <span id="ram-text">68%</span>
-                    </div>
-                    <div class="diag-item">
-                        <span>NET_TRAFFIC:</span>
-                        <span class="glow-green">SECURE // ENCRYPTED</span>
-                    </div>
-                </div>
-            </div>
-
+            <p class="audio-note">*Adjust sliders to start/mix sounds</p>
         </div>
 
-        <footer class="os-footer">
-            <div>WARNING: AUTHORIZED ACCESS ONLY</div>
-            <div>CORE_OS_V2.6 // © 2026</div>
-        </footer>
+        <div class="glass-panel center-box">
+            <h1 class="logo">ORBIT_CAPSULE</h1>
+            <div class="timer-display" id="timer">25:00</div>
+            <div class="timer-buttons">
+                <button class="action-btn" onclick="toggleTimer()">START / PAUSE</button>
+                <button class="action-btn btn-reset" onclick="resetTimer()">RESET</button>
+            </div>
+        </div>
+
+        <div class="glass-panel diary-box">
+            <h2>📝 CAPSULE THOUGHTS</h2>
+            <p>Type your thoughts, they stay here.</p>
+            <textarea id="diary-input" placeholder="How is your day going? Write it down..." oninput="saveNote()"></textarea>
+            <span class="save-status" id="save-status">Saved locally</span>
+        </div>
+
     </div>
+
+    <audio id="audio-rain" loop src="https://assets.mixkit.co/active_storage/sfx/2433/2433-84.wav"></audio>
+    <audio id="audio-fire" loop src="https://assets.mixkit.co/active_storage/sfx/2438/2438-84.wav"></audio>
+    <audio id="audio-wind" loop src="https://assets.mixkit.co/active_storage/sfx/2432/2432-84.wav"></audio>
 
     <script src="script.js"></script>
 </body>
