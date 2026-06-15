@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌌 OrbitCapsule - Your Chill Space</title>
+    <title>🌌 OrbitCapsule - Samurai Space</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="space-bg"></div>
+    <!-- Video Background Container -->
+    <div class="video-bg-container">
+        <!-- ഫോൾഡറിലുള്ള bg-video.mp4 ഇവിടെ ലോഡ് ചെയ്യും, തനിയെ ലൂപ്പ് ആയി പ്ലേ ചെയ്യും -->
+        <video autoplay muted loop id="bgVideo">
+            <source src="bg-video.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="video-overlay"></div>
+    </div>
 
+    <!-- Main Dynamic Capsule -->
     <div class="capsule-wrapper">
         
+        <!-- Left Side: Ambient Sound Controller -->
         <div class="glass-panel sound-box">
             <h2>🎵 AMBIENT MIXER</h2>
             <p>Create your perfect focus environment</p>
@@ -34,6 +44,7 @@
             <p class="audio-note">*Adjust sliders to start/mix sounds</p>
         </div>
 
+        <!-- Center Window: Timer & Main Status -->
         <div class="glass-panel center-box">
             <h1 class="logo">ORBIT_CAPSULE</h1>
             <div class="timer-display" id="timer">25:00</div>
@@ -43,6 +54,7 @@
             </div>
         </div>
 
+        <!-- Right Side: Personal Space Diary -->
         <div class="glass-panel diary-box">
             <h2>📝 CAPSULE THOUGHTS</h2>
             <p>Type your thoughts, they stay here.</p>
@@ -52,6 +64,7 @@
 
     </div>
 
+    <!-- Background Audio Files -->
     <audio id="audio-rain" loop src="https://assets.mixkit.co/active_storage/sfx/2433/2433-84.wav"></audio>
     <audio id="audio-fire" loop src="https://assets.mixkit.co/active_storage/sfx/2438/2438-84.wav"></audio>
     <audio id="audio-wind" loop src="https://assets.mixkit.co/active_storage/sfx/2432/2432-84.wav"></audio>
