@@ -1,66 +1,54 @@
-// Parallax Effect
-document.addEventListener('mousemove', (e) => {
-    const layers = document.querySelectorAll('.parallax-layer');
-    const x = (window.innerWidth - e.pageX * 2) / 100;
-    const y = (window.innerHeight - e.pageY * 2) / 100;
-
-    layers.forEach(layer => {
-        const speed = layer.getAttribute('data-speed');
-        layer.style.transform = `translateX(${x * speed}px) translateY(${y * speed}px)`;
-    });
-});
-
-// Modal Controls
-function openModal() {
-    document.getElementById('avatarModal').style.display = 'flex';
+// 1. Live Hacker Clock Engine
+function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('cyber-clock').innerText = `${hours}:${minutes}:${seconds}`;
 }
+setInterval(updateClock, 1000);
+updateClock();
 
-function closeModal() {
-    document.getElementById('avatarModal').style.display = 'none';
-}
+// 2. Automated Terminal Activity Spammer
+const logs = [
+    ">> Fetching protocol sync data packet...",
+    ">> Port 8080 handshake successfully cleared.",
+    ">> Syncing local mainframe credentials...",
+    ">> Warning: Blocked minor connection ping from anonymous port.",
+    ">> Automated backup sequence finalized.",
+    ">> Core temperature steady at 38°C.",
+    ">> Active proxy routing configuration initialized."
+];
 
-function selectClass(className) {
-    alert(`Awesome! You selected the ${className} class. Your journey begins!`);
-    closeModal();
-}
-
-// Tab Switching System (ഡൈനാമിക് കണ്ടന്റ് മാറ്റാൻ)
-function switchTab(tabName) {
-    const contentArea = document.getElementById('content-area');
+function appendTerminalLog() {
+    const terminal = document.getElementById('terminal-body');
+    const randomLog = logs[Math.floor(Math.random() * logs.length)];
     
-    // ആക്ടീവ് സ്റ്റേറ്റ് മാറ്റാൻ
-    document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+    terminal.innerHTML += `${randomLog}<br>`;
     
-    if (tabName === 'anime') {
-        contentArea.innerHTML = `
-            <div class="content-page">
-                <h2>⚔️ Featured Anime Heroes</h2>
-                <p>Explore the strongest warriors in the universe. Updated daily from the latest shards of reality.</p>
-                <ul style="margin-top:15px; list-style:none; line-height:2;">
-                    <li>• <strong>Goku</strong> - Universe 7's mightiest Saiyan.</li>
-                    <li>• <strong>Naruto Uzumaki</strong> - The Seventh Hokage.</li>
-                    <li>• <strong>Luffy</strong> - King of the Pirates.</li>
-                </ul>
-            </div>`;
-    } else if (tabName === 'games') {
-        contentArea.innerHTML = `
-            <div class="content-page">
-                <h2>🎮 Active Game Quests</h2>
-                <p>Embark on dynamic missions and claim your legendary ranking rewards.</p>
-                <ul style="margin-top:15px; list-style:none; line-height:2;">
-                    <li>• <strong>Quest #1:</strong> Defeat the Phantom Shogun (RPG Track)</li>
-                    <li>• <strong>Quest #2:</strong> Achieve Grandmaster in Ranked Matches</li>
-                </ul>
-            </div>`;
-    } else if (tabName === 'latest') {
-        contentArea.innerHTML = `
-            <div class="content-page">
-                <h2>📢 Latest & Upcoming Releases</h2>
-                <p>Stay updated with the freshest seasonal drops and upcoming events across the globe.</p>
-                <ul style="margin-top:15px; list-style:none; line-height:2;">
-                    <li>• <strong>July 2026:</strong> Cyber Nexus - Open Beta Launch</li>
-                    <li>• <strong>August 2026:</strong> Shinobi Chronicles - Season 4 Premiere</li>
-                </ul>
-            </div>`;
+    // ഓട്ടോമാറ്റിക്കായി താഴേക്ക് സ്ക്രോൾ ചെയ്യാൻ
+    terminal.scrollTop = terminal.scrollHeight;
+
+    // ടെർമിനൽ ഒരുപാട് വലുതാവാതിരിക്കാൻ ഒരു ക്ലീനപ്പ്
+    if (terminal.innerHTML.split('<br>').length > 12) {
+        terminal.innerHTML = terminal.innerHTML.split('<br>').slice(2).join('<br>');
     }
 }
+setInterval(appendTerminalLog, 2500);
+
+// 3. Fake Live Hardware Diagnostics Updates
+setInterval(() => {
+    const cpuVal = Math.floor(Math.random() * (75 - 25) + 25);
+    const ramVal = Math.floor(Math.random() * (90 - 50) + 50);
+
+    document.getElementById('cpu-bar').style.width = cpuVal + '%';
+    document.getElementById('cpu-text').innerText = cpuVal + '%';
+
+    document.getElementById('ram-bar').style.width = ramVal + '%';
+    document.getElementById('ram-text').innerText = ramVal + '%';
+}, 2000);
+
+// 4. Test Trigger Event Alert Popup Box
+function triggerBreachAlert() {
+    alert(">> DIAGNOSTIC REPORT: Core integrity check 100% operational. Zero system errors found.");
+        }
