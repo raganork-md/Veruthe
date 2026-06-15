@@ -1,95 +1,183 @@
-/* പഴയ കോഡിന്റെ താഴെ ഇത് കൂടി ചേർക്കുക */
-
-/* Link Adjustments */
-a.path-card {
-    text-decoration: none;
-    color: inherit;
+/* Base Matrix Theme Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Share Tech Mono', monospace;
 }
 
-.click-text {
-    font-size: 11px;
-    color: #a29bfe;
-    display: block;
-    margin-top: 4px;
+body {
+    background-color: #030704;
+    color: #00ff66;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
-/* Modal (Pop-up) Styling */
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 100; 
-    left: 0;
-    top: 0;
+/* Sci-fi Background Grid */
+.cyber-grid {
+    position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    backdrop-filter: blur(8px);
-    justify-content: center;
-    align-items: center;
+    background-image: 
+        linear-gradient(rgba(0, 255, 102, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 102, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 1;
 }
 
-.modal-content {
-    background: #121220;
-    border: 2px solid #a29bfe;
-    padding: 30px;
-    border-radius: 16px;
-    width: 400px;
-    text-align: center;
-    color: white;
+/* Main Main UI Layout Wrapper */
+.os-container {
     position: relative;
-    box-shadow: 0 0 30px rgba(162, 155, 254, 0.4);
-}
-
-.close-btn {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    font-size: 28px;
-    cursor: pointer;
-    color: #b2bec3;
-}
-
-.close-btn:hover {
-    color: #ff7675;
-}
-
-.class-options {
+    z-index: 10;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 15px;
+}
+
+/* Header Config */
+.os-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #00ff66;
+    padding-bottom: 10px;
+    text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+}
+
+.clock-display {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.status-indicator {
+    animation: blink 1.5s infinite;
+}
+
+/* Grid Grid Layout */
+.os-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 15px;
+    flex: 1;
+    margin: 15px 0;
+}
+
+/* Terminal spans full width on row 1 */
+.terminal-panel {
+    grid-column: span 2;
+}
+
+/* Box & Panels Base Framework */
+.panel {
+    background: rgba(0, 20, 5, 0.6);
+    border: 1px solid #00ff66;
+    box-shadow: inset 0 0 15px rgba(0, 255, 102, 0.1);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    background: rgba(0, 255, 102, 0.1);
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid #00ff66;
+    letter-spacing: 1px;
+}
+
+.panel-body {
+    padding: 15px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Terminal Typing Space Styles */
+.console-text {
+    line-height: 1.6;
+    font-size: 13px;
+    color: #33ff77;
+}
+
+/* Interface Control Buttons UI Grid */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-top: 20px;
 }
 
-.class-box {
-    background: rgba(255,255,255,0.05);
-    padding: 12px;
-    border-radius: 8px;
+.cyber-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid #00ff66;
+    color: #00ff66;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
     cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
-    border: 1px solid transparent;
+    transition: 0.2s;
 }
 
-.class-box:hover {
-    background: rgba(162, 155, 254, 0.2);
-    border-color: #a29bfe;
-    transform: translateY(-2px);
+.cyber-btn:hover {
+    background: rgba(0, 255, 102, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+    transform: scale(1.02);
 }
 
-/* Dynamic Content Styles */
-.content-page {
-    text-align: left;
-    max-width: 600px;
-    animation: fadeIn 0.5s ease-in-out;
+/* System Monitor Diagnostics */
+.diagnostics-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
 }
 
-.content-page h2 {
-    font-family: 'Orbitron', sans-serif;
-    color: #a29bfe;
-    margin-bottom: 15px;
+.diag-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-    }
+.progress-bar {
+    flex: 1;
+    height: 10px;
+    background: rgba(0, 255, 102, 0.1);
+    border: 1px solid #00ff66;
+    margin: 0 15px;
+    border-radius: 2px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #00ff66;
+    box-shadow: 0 0 8px #00ff66;
+    transition: width 0.4s ease;
+}
+
+.glow-green {
+    text-shadow: 0 0 8px #00ff66;
+}
+
+/* Footer Style */
+.os-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    border-top: 1px dashed rgba(0, 255, 102, 0.3);
+    padding-top: 8px;
+    color: rgba(0, 255, 102, 0.5);
+}
+
+/* General Animations */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
