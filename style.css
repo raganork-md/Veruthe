@@ -16,21 +16,31 @@ body {
     overflow: hidden;
 }
 
-/* Beautiful Moving Gradient Background */
-.space-bg {
+/* Fullscreen Video Background Styles */
+.video-bg-container {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #0f172a, #1e1b4b, #311042);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
     z-index: 1;
+    overflow: hidden;
 }
 
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+.video-bg-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* വീഡിയോ സ്ക്രീനിൽ കറക്റ്റ് ആയി ഫിറ്റ് ആകാൻ */
+}
+
+/* വീഡിയോ ഒരുപാട് ബ്രൈറ്റ് ആവാതിരിക്കാൻ ഒരു ഡാർക്ക് ലെയർ */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(6, 9, 25, 0.65); /* വീഡിയോയുടെ മുകളിൽ ഒരു ബ്ലാക്ക് ഷേഡ് */
 }
 
 /* Main Dashboard Wrapper */
@@ -47,13 +57,13 @@ body {
 
 /* Premium Glassmorphism Panel Design */
 .glass-panel {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(15, 23, 42, 0.45); /* വീഡിയോ കാണാൻ പാകത്തിന് കൂടുതൽ സുതാര്യമാക്കി */
     border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 24px;
     padding: 30px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -126,7 +136,7 @@ input[type="range"]::-webkit-slider-thumb {
 .center-box {
     text-align: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(15, 23, 42, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -188,7 +198,7 @@ input[type="range"]::-webkit-slider-thumb {
 textarea {
     width: 100%;
     flex: 1;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 14px;
     padding: 15px;
@@ -220,5 +230,4 @@ textarea:focus {
     .glass-panel {
         padding: 20px;
     }
-    }
-    
+}
