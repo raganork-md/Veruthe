@@ -1,11 +1,24 @@
-// 1. Live Ambient Sound Mixer Controller
+// വിൻഡോ ലോഡ് ആകുമ്പോൾ വീഡിയോ സ്പീഡ് പകുതിയാക്കുന്നു (Slow-motion Effect)
+window.onload = () => {
+    const video = document.getElementById('bgVideo');
+    if (video) {
+        video.playbackRate = 0.5; // സാധാരണ സ്പീഡിന്റെ പകുതി (0.5x Slow-mo)
+    }
+
+    // പഴയ നോട്ട് ലോക്കൽ സ്റ്റോറേജിൽ നിന്ന് എടുക്കാൻ
+    const savedNote = localStorage.getItem('orbit_capsule_note');
+    if (savedNote) {
+        document.getElementById('diary-input').value = savedNote;
+    }
+};
+
+// Ambient Sound Mixer
 function updateVolume(type) {
     const audio = document.getElementById(`audio-${type}`);
     const slider = document.getElementById(`${type}-vol`);
     
     audio.volume = slider.value;
     
-    // വോളിയം 0-ൽ കൂടുതൽ ആണെങ്കിൽ പ്ലേ ചെയ്യുക, ഇല്ലെങ്കിൽ പോസ് ചെയ്യുക
     if (slider.value > 0) {
         if (audio.paused) {
             audio.play().catch(err => console.log("Audio play gesture required"));
@@ -15,9 +28,9 @@ function updateVolume(type) {
     }
 }
 
-// 2. Pomodoro Focus Timer Logic
+// Pomodoro Focus Timer
 let timerInterval = null;
-let timeLeft = 25 * 60; // 25 മിനിറ്റ് സെക്കൻഡിൽ
+let timeLeft = 25 * 60; 
 
 function updateTimerDisplay() {
     const minutes = Math.floor(timeLeft / 60);
@@ -53,7 +66,7 @@ function resetTimer() {
     updateTimerDisplay();
 }
 
-// 3. LocalStorage Diary Saver
+// LocalStorage Diary Saver
 function saveNote() {
     const text = document.getElementById('diary-input').value;
     localStorage.setItem('orbit_capsule_note', text);
@@ -64,11 +77,3 @@ function saveNote() {
         status.innerText = "Saved locally ✓";
     }, 500);
 }
-
-// പേജ് ലോഡ് ആകുമ്പോൾ പഴയ നോട്ട് തിരികെ എടുക്കാൻ
-window.onload = () => {
-    const savedNote = localStorage.getItem('orbit_capsule_note');
-    if (savedNote) {
-        document.getElementById('diary-input').value = savedNote;
-    }
-};
